@@ -1,5 +1,5 @@
-import HomeScreen from "../../../shared/src/screens/HomeScreen";
-import { SharedComponentProps } from "../../../shared/src/types";
+import HomeScreen from "../../../../shared/src/screens/HomeScreen";
+import { SharedComponentProps } from "../../../../shared/src/types";
 import { View, Text } from "react-native";
 import { Link } from "expo-router";
 
