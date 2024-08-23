@@ -16,7 +16,7 @@ export interface AuxProps {
 }
 
 export interface SharedComponentProps {
-    Container: JSXElementConstructor<any>
-    Text: JSXElementConstructor<any>
-    Link: JSXElementConstructor<any>
+    Container: JSXElementConstructor<any> | string
+    Text: JSXElementConstructor<any> | string
+    Link: JSXElementConstructor<any> | string
 }

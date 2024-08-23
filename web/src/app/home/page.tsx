@@ -1,10 +1,3 @@
-import Link from "next/link";
+import Home from "@/screens/Home";
 
-export default function Home() {
-  return (
-    <div className="flex min-h-screen flex-1 items-center justify-center flex-col">
-    <p >Home</p>
-    <Link className="text-blue-700" href="/">Index</Link>
-  </div>
-  );
-}
+export default Home
