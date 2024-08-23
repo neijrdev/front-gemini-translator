@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import "../global.css"
+import "../../global.css"
 import * as SplashScreen from 'expo-splash-screen';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
