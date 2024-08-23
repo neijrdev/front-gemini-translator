@@ -1,8 +1,6 @@
-import { AppScreenWeb } from "./adapter";
-
+import React from 'react';
+import { AppScreenWeb } from './adapter';
 
 export default function App() {
-  return (
-     <AppScreenWeb/>
-  );
+	return <AppScreenWeb />;
 }

@@ -1,3 +1,3 @@
-import AppScreen from "@/src/screens/App";
+import AppScreen from '@/src/screens/App';
 
-export default AppScreen
+export default AppScreen;

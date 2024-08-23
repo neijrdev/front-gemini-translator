@@ -1,3 +1,3 @@
-import App from "@/screens/App";
+import App from '@/screens/App';
 
-export default App
+export default App;
