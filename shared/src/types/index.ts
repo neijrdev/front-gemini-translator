@@ -15,8 +15,11 @@ export interface AuxProps {
     className: string | undefined
 }
 
+export type GenericJSXElement = JSXElementConstructor<any> | string
+
 export interface SharedComponentProps {
-    Container: JSXElementConstructor<any> | string
-    Text: JSXElementConstructor<any> | string
-    Link: JSXElementConstructor<any> | string
+    Container: GenericJSXElement
+    Text: GenericJSXElement
+    Link: GenericJSXElement
+    Button: GenericJSXElement
 }
