@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { SharedComponentProps } from '../../../shared/src/types';
+import { SharedComponentProps } from '@shared/types';
 import Button from './Button';
 
 export const sharedComponentsProps: SharedComponentProps = {

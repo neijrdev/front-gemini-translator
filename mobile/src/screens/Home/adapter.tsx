@@ -1,6 +1,6 @@
 import React from 'react';
-import HomeScreen from '../../../../shared/src/screens/HomeScreen';
-import { sharedComponentsProps } from '@/src/components';
+import HomeScreen from '@shared/screens/HomeScreen';
+import { sharedComponentsProps } from '@/components/index';
 
 export const HomeScreenMobile = ({ ...props }) => {
 	return <HomeScreen {...sharedComponentsProps} {...props}></HomeScreen>;
