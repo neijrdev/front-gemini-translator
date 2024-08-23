@@ -1,7 +1,9 @@
 import { useEffect } from 'react';
 import "../global.css"
 import * as SplashScreen from 'expo-splash-screen';
-import { Stack } from 'expo-router';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+import {Slot} from 'expo-router';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -14,10 +16,9 @@ export default function App () {
 
 
   return (
-    <Stack>
-      <Stack.Screen name="index" options={{headerShown: false}}/>
-      <Stack.Screen name="home" options={{headerShown: false}}/>
-    </Stack>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Slot/>
+    </SafeAreaView>
   );
 }
 

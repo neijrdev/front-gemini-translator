@@ -6,9 +6,9 @@ import { Link } from 'expo-router';
 export default function HomeScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <View className="flex-1 items-center justify-center bg-white">
+      <View className="flex-1 min-h-screen items-center justify-center bg-white">
         <Text className="text-red">Home</Text>
-        <Link className="text-blue-700" href="/">App</Link>
+        <Link className="text-blue-700" href="/">Index</Link>
       </View>
     </SafeAreaView>
   );
