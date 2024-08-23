@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { withExpoSnack } from 'nativewind';
+import "../global.css"
 import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
-const App = ()=> {
+export default function App () {
 
   useEffect(() => {
       SplashScreen.hideAsync();
@@ -22,4 +22,3 @@ const App = ()=> {
 }
 
 
-export default withExpoSnack(App);
