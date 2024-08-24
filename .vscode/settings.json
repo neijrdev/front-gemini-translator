@@ -21,7 +21,7 @@
 		"web/next.config.mjs": true,
 		"web/package-lock.json": true,
 		"web/postcss.config.mjs": true,
-		"web/tailwind.config.ts": true,
+		// "web/tailwind.config.ts": true,
 		"web/tsconfig.json": true,
 		"web/yarn.lock": true,
 

@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { JSXElementConstructor, ReactPortal } from 'react';
+import {} from 'tailwindcss'
 
 export type ReactComponent =
 	| React.ReactElement<any, string | JSXElementConstructor<any>>
@@ -19,8 +20,10 @@ export interface AuxProps {
 export type GenericJSXElement = JSXElementConstructor<any> | string;
 
 export interface SharedComponentProps {
-	Container: GenericJSXElement;
-	Text: GenericJSXElement;
-	Link: GenericJSXElement;
-	Button: GenericJSXElement;
+	components: {
+		Container: GenericJSXElement;
+		Text: GenericJSXElement;
+		Link: GenericJSXElement;
+		Button: GenericJSXElement;
+	};
 }
