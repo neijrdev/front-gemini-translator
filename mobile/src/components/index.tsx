@@ -6,7 +6,7 @@ export const sharedComponentsProps: SharedComponentProps = {
 	components: {
 		Container: View,
 		Text: Text,
-		Link: Link,
+		Link,
 		Button: Pressable
 	}
 };

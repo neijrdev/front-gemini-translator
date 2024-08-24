@@ -4,19 +4,24 @@ import HomeScreen from '../../../src/screens/HomeScreen';
 import { SharedComponentProps } from '../../../src/types';
 
 export function runHomeScreenTests(
-	setup: () => { render: any; sharedComponentProps: SharedComponentProps; rootPath: string }
+	setup: () => {
+		render: any;
+		expectToHaveProp: (element: any, propName: string, propValue: any) => void;
+		sharedComponentProps: SharedComponentProps;
+		rootPath: string;
+	}
 ) {
 	describe('HomeScreen Component', () => {
 		it('should render correctly', () => {
 			//GIVEN
-			const { render, sharedComponentProps, rootPath } = setup();
-			const { getByText, getByRole } = render(<HomeScreen components={sharedComponentProps.components} />);
+			const { render, expectToHaveProp, sharedComponentProps, rootPath } = setup();
+			const { getByText, getByTestId } = render(<HomeScreen components={sharedComponentProps.components} />);
 
-			//THEN
+			//THE
 			expect(getByText('Home')).toBeTruthy();
-			const linkElement = getByRole('link', { name: 'App' });
+			const linkElement = getByTestId('link');
 			expect(linkElement).toBeTruthy();
-			expect(linkElement).toHaveProperty('href', rootPath);
+			expectToHaveProp(linkElement, 'href', rootPath);
 		});
 	});
 }

@@ -3,8 +3,14 @@ import { render } from '@testing-library/react';
 import { sharedComponentsProps } from '@/components/index';
 
 const setup = () => ({
+	expectToHaveProp: (element: unknown, propName: string, propValue: unknown) => {
+		// "@ts-expect-error"
+		expect(element).toHaveProperty(propName, propValue);
+	},
 	render,
-	sharedComponentProps: sharedComponentsProps,
+	sharedComponentProps: {
+		...sharedComponentsProps
+	},
 	rootPath: 'http://localhost/'
 });
 

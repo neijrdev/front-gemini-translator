@@ -6,7 +6,7 @@ export default function HomeScreen(sharedComponentProps: SharedComponentProps) {
 	return (
 		<Component.Container className="flex min-h-screen flex-1 items-center justify-center flex-col">
 			<Component.Text className="text-dark">Home</Component.Text>
-			<Component.Link className="text-blue-700" href="/">
+			<Component.Link className="text-blue-700" href="/" data-testid="link">
 				App
 			</Component.Link>
 		</Component.Container>

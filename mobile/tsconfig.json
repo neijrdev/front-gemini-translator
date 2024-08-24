@@ -4,8 +4,10 @@
 		"strict": true,
 		"paths": {
 			"@/*": ["./src/*"],
-			"@shared/*": ["../shared/src/*"]
+			"@shared/*": ["../shared/src/*"],
+			"@sharedtest/*": ["../shared/_tests/*"]
 		}
 	},
-	"include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"]
+	"include": ["**/*.ts", "**/*.tsx", ".expo/types/**/*.ts", "expo-env.d.ts"],
+	"types": ["jest", "@testing-library/react-native"]
 }
