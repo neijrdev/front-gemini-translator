@@ -7,7 +7,10 @@
 	"dependencies": {},
 	"scripts": {
 		"dev": "tsc --watch",
-		"lint": "eslint"
+		"lint": "eslint",
+		"test:web": "cd web && yarn test",
+		"test:mobile": "cd mobile && yarn test",
+		"test:all": "yarn test:web && yarn test:mobile"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.9.1",
