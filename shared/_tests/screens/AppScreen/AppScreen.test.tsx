@@ -1,21 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { JSXElementConstructor } from 'react';
+import React from 'react';
 import AppScreen, { AppScreenProps } from '../../../src/presentation/screens/AppScreen';
-import { ReactComponentTest } from '../../../src/types';
-import { Helpers } from '../../../helpers';
-
-export type RenderResultShared = {
-	getByText: (value: string) => ReactComponentTest;
-	getByTestId: (value: string) => ReactComponentTest;
-	debug: () => void;
-};
-
-export type ComponentRenderFunction =
-	| React.ReactNode
-	| React.ReactElement<any, string | JSXElementConstructor<any>>
-	| React.JSX.Element;
-
-export type RenderFunction = (component: ComponentRenderFunction, options?: any) => RenderResultShared;
+import { Helpers, RenderFunction } from '../../../helpers';
 
 export function runAppScreenTests(
 	setup: () => {
@@ -51,7 +36,7 @@ export function runAppScreenTests(
 
 			//WHEN - press button picker
 			fireEvent(buttonPicker).click();
-			mockPickerFile({ input: getByTestId('buttonPicker.input'), mockInput: mockFilePdf });
+			mockPickerFile({ getByTestId, inputTestId: 'buttonPicker', mockInput: mockFilePdf });
 		});
 	});
 }

@@ -1,22 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { JSXElementConstructor } from 'react';
+import React from 'react';
 import HomeScreen from '../../../src/presentation/screens/HomeScreen';
-import { ReactComponentTest, SharedComponentProps } from '../../../src/types';
-import { Helpers } from '../../../helpers';
-
-export type RenderResultShared = {
-	getByText: (value: string) => ReactComponentTest;
-	getByTestId: (value: string) => ReactComponentTest;
-	debug: () => void;
-};
-
-export type ComponentRenderFunction =
-	| React.ReactNode
-	| React.ReactElement<any, string | JSXElementConstructor<any>>
-	| React.JSX.Element;
-
-export type RenderFunction = (component: ComponentRenderFunction, options?: any) => RenderResultShared;
-export type ExpectToHaveProp = (element: ReactComponentTest, propName: string, propValue: unknown) => void;
+import { SharedComponentProps } from '../../../src/types';
+import { Helpers, RenderFunction } from '../../../helpers';
 
 export function runHomeScreenTests(
 	setup: () => {

@@ -1,13 +1,15 @@
 import '@testing-library/jest-native/extend-expect';
-import { runHomeScreenTests } from '@sharedtest/screens/HomeScreen/HomeScreen.test';
+import { runAppScreenTests } from '@sharedtest/screens/AppScreen/AppScreen.test';
 import { sharedComponentsProps } from '@/components/index';
 import { defaultHelpers, renderMobile } from '../../helpers';
+import ButtonPicker from '@/screens/App/components/FilePickerButton';
 import { Link } from '../../mockComponents/Link';
 
 export const customSharedComponentsProps = {
 	components: {
 		...sharedComponentsProps.components,
-		Link
+		Link,
+		ButtonPicker
 	}
 };
 
@@ -18,4 +20,4 @@ const setup = () => ({
 	rootPath: '/'
 });
 
-runHomeScreenTests(setup);
+runAppScreenTests(setup);

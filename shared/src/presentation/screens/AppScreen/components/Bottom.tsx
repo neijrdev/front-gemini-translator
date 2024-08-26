@@ -14,7 +14,7 @@ export default function Bottom(bottomProps: BottomProps) {
 				onPickerResult={onPickerResult}
 				data-testid="buttonPicker"
 			>
-				<Component.Text className="text-white font-medium text-lg">Inserir PDF</Component.Text>
+				<Component.Text className="text-white font-medium text-lg text-center">Inserir PDF</Component.Text>
 			</Component.ButtonPicker>
 		</Component.Container>
 	);

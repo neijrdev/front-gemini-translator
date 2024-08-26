@@ -1,15 +1,32 @@
 import { sharedComponentsProps } from '@/components';
-import { ComponentRenderFunction, RenderResultShared } from '@sharedtest/screens/HomeScreen/HomeScreen.test';
-import { render, RenderOptions } from '@testing-library/react-native';
+import { render, RenderOptions, fireEvent as fireEventNative } from '@testing-library/react-native';
 import { Link } from 'expo-router';
-import { ReactElement } from 'react';
+import { ReactTestInstance } from 'react-test-renderer';
+import { ComponentRenderFunction, RenderResultShared } from '../../../shared/helpers';
 
 export function expectToHaveProp(element: unknown, propName: string, propValue: unknown) {
 	expect(element).toHaveProp(propName, propValue);
 }
 
+export function expectToHaveText(element: unknown, text: string) {
+	expect(element).toHaveTextContent(text);
+}
+
+export function fireEvent(element: ReactTestInstance) {
+	return {
+		click: () => fireEventNative.press(element)
+	};
+}
+
+export const defaultHelpers = {
+	expectToHaveProp,
+	expectToHaveText,
+	fireEvent,
+	mockPickerFile: mockInputFile
+};
+
 export function renderMobile(component: ComponentRenderFunction, options?: unknown): RenderResultShared {
-	const { getByText, getByTestId, debug } = render(component as ReactElement, options as RenderOptions);
+	const { getByText, getByTestId, debug } = render(component as React.ReactElement, options as RenderOptions);
 
 	return {
 		getByText: (value: string) => getByText(value),
@@ -24,3 +41,13 @@ export const customSharedComponentsProps = {
 		Link
 	}
 };
+
+type MockInputFilePros = {
+	inputTestId: string;
+	mockInput: File;
+	getByTestId: (testId: string) => Element;
+};
+
+export function mockInputFile({ getByTestId, inputTestId, mockInput }: MockInputFilePros) {
+	console.log(getByTestId, inputTestId, mockInput);
+}

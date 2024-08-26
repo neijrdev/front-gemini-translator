@@ -5,10 +5,10 @@ import Middle from './components/Middle';
 
 export interface AppScreenProps extends SharedComponentProps {
 	components: SharedComponentProps['components'] & {
-		ButtonPicker: React.ElementType<{
+		ButtonPicker: React.ComponentType<{
 			onPickerResult: (file: File | null) => void;
 			className: string;
-			children: GenericJSXElement | React.ReactElement;
+			children: GenericJSXElement | React.ReactElement | React.ReactNode;
 		}>;
 	};
 }
