@@ -17,11 +17,10 @@
 		"paths": {
 			"@/*": ["./src/*"],
 			"@types/*": ["./src/types*"],
-			"@presentation/*": ["./src/presentation*"],
-			"@screens/*": ["./src/presentation/screens*"]
+			"@presentation/*": ["./src/presentation*"]
 		}
 	},
 	"include": ["**/*.ts", "**/*.tsx"],
 	"exclude": ["node_modules", "build", "scripts", "acceptance-tests", "webpack", "jest", "src/setupTests.ts"],
-	"types": ["typePatches"]
+	"types": ["typePatches", "jest"]
 }

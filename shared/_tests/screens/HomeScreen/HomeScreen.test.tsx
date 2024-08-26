@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { JSXElementConstructor } from 'react';
-import HomeScreen from '../../../src/screens/HomeScreen';
+import HomeScreen from '../../../src/presentation/screens/HomeScreen';
 import { ReactComponentTest, SharedComponentProps } from '../../../src/types';
 
 export type RenderResultShared = {
