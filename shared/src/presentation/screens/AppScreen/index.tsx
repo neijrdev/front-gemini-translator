@@ -1,14 +1,30 @@
 import React from 'react';
-import { SharedComponentProps } from '@/types';
+import { GenericJSXElement, SharedComponentProps } from '@/types';
+import Bottom from './components/Bottom';
+import Middle from './components/Middle';
 
-export default function AppScreen(sharedComponentProps: SharedComponentProps) {
+export interface AppScreenProps extends SharedComponentProps {
+	components: SharedComponentProps['components'] & {
+		ButtonPicker: React.ElementType<{
+			onPickerResult: (file: File | null) => void;
+			className: string;
+			children: GenericJSXElement | React.ReactElement;
+		}>;
+	};
+}
+
+export default function AppScreen(sharedComponentProps: AppScreenProps) {
+	const onPickerResult = (file: File | null) => {
+		console.log('file recebida pickerFileResult');
+		console.log(file?.name);
+	};
+
 	const { components: Component } = sharedComponentProps;
+
 	return (
-		<Component.Container className="flex min-h-screen flex-1 items-center justify-center flex-col">
-			<Component.Text className="text-dark">App</Component.Text>
-			<Component.Link className="text-blue-700" href="/home">
-				Home
-			</Component.Link>
+		<Component.Container className="flex min-h-screen flex-1 items-center flex-col p-5 pb-10 justify-between">
+			<Middle {...sharedComponentProps} />
+			<Bottom {...sharedComponentProps} onPickerResult={onPickerResult} />
 		</Component.Container>
 	);
 }

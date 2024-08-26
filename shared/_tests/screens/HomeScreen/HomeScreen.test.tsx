@@ -2,6 +2,7 @@
 import React, { JSXElementConstructor } from 'react';
 import HomeScreen from '../../../src/presentation/screens/HomeScreen';
 import { ReactComponentTest, SharedComponentProps } from '../../../src/types';
+import { Helpers } from '../../../helpers';
 
 export type RenderResultShared = {
 	getByText: (value: string) => ReactComponentTest;
@@ -15,13 +16,12 @@ export type ComponentRenderFunction =
 	| React.JSX.Element;
 
 export type RenderFunction = (component: ComponentRenderFunction, options?: any) => RenderResultShared;
-
 export type ExpectToHaveProp = (element: ReactComponentTest, propName: string, propValue: unknown) => void;
 
 export function runHomeScreenTests(
 	setup: () => {
 		render: RenderFunction;
-		expectToHaveProp: ExpectToHaveProp;
+		helpers: Helpers;
 		sharedComponentProps: SharedComponentProps;
 		rootPath: string;
 	}
@@ -29,7 +29,8 @@ export function runHomeScreenTests(
 	describe('HomeScreen Component', () => {
 		it('should render correctly', () => {
 			//GIVEN
-			const { render, expectToHaveProp, sharedComponentProps, rootPath } = setup();
+			const { render, helpers, sharedComponentProps, rootPath } = setup();
+			const { expectToHaveProp } = helpers;
 			const { getByText, getByTestId } = render(<HomeScreen components={sharedComponentProps.components} />);
 
 			//THE
