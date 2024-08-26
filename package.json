@@ -2,7 +2,7 @@
 	"name": "front-gemini-translator",
 	"version": "1.0.0",
 	"main": "index.js",
-	"author": "nei.vitor <nei.vitor@corebiz.ag>",
+	"author": "nei.vitor",
 	"license": "MIT",
 	"dependencies": {},
 	"scripts": {
