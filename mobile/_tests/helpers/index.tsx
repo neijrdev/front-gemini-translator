@@ -1,8 +1,8 @@
 import { sharedComponentsProps } from '@/components';
 import { ComponentRenderFunction, RenderResultShared } from '@sharedtest/screens/HomeScreen/HomeScreen.test';
 import { render, RenderOptions } from '@testing-library/react-native';
-import React, { ReactElement } from 'react';
-import { Pressable, PressableProps } from 'react-native';
+import { Link } from 'expo-router';
+import { ReactElement } from 'react';
 
 export function expectToHaveProp(element: unknown, propName: string, propValue: unknown) {
 	expect(element).toHaveProp(propName, propValue);
@@ -17,20 +17,6 @@ export function renderMobile(component: ComponentRenderFunction, options?: unkno
 		debug
 	};
 }
-
-interface CustomPressableProps extends PressableProps {
-	'data-testid'?: string;
-}
-
-export const Link = (props: CustomPressableProps) => {
-	return (
-		<>
-			<Pressable {...props} testID={props['data-testid']}>
-				{props.children}
-			</Pressable>
-		</>
-	);
-};
 
 export const customSharedComponentsProps = {
 	components: {
