@@ -1,9 +1,9 @@
 import React from 'react';
 import '@testing-library/jest-native/extend-expect';
 import { runHomeScreenTests } from '@sharedtest/screens/HomeScreen/HomeScreen.test';
-import { render } from '@testing-library/react-native';
 import { sharedComponentsProps } from '@/components/index';
 import { Pressable, PressableProps } from 'react-native';
+import { expectToHaveProp, renderMobile } from '../../helpers';
 
 interface CustomPressableProps extends PressableProps {
 	'data-testid'?: string;
@@ -25,10 +25,8 @@ export const customSharedComponentsProps = {
 };
 
 const setup = () => ({
-	expectToHaveProp: (element: unknown, propName: string, propValue: unknown) => {
-		expect(element).toHaveProp(propName, propValue);
-	},
-	render,
+	expectToHaveProp,
+	render: renderMobile,
 	sharedComponentProps: customSharedComponentsProps,
 	rootPath: '/'
 });
