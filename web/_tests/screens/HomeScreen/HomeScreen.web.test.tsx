@@ -1,13 +1,11 @@
+/* eslint-disable react/react-in-jsx-scope */
 import { runHomeScreenTests } from '@sharedtest/screens/HomeScreen/HomeScreen.test';
-import { render } from '@testing-library/react';
 import { sharedComponentsProps } from '@/components/index';
+import { expectToHaveProp, renderWeb } from '../../helpers';
 
 const setup = () => ({
-	expectToHaveProp: (element: unknown, propName: string, propValue: unknown) => {
-		// "@ts-expect-error"
-		expect(element).toHaveProperty(propName, propValue);
-	},
-	render,
+	expectToHaveProp,
+	render: renderWeb,
 	sharedComponentProps: {
 		...sharedComponentsProps
 	},
