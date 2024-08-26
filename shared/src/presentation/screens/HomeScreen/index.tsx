@@ -1,5 +1,5 @@
 import React from 'react';
-import { SharedComponentProps } from '../../types';
+import { SharedComponentProps } from '../../../types';
 
 export default function HomeScreen(sharedComponentProps: SharedComponentProps) {
 	const { components: Component } = sharedComponentProps;
