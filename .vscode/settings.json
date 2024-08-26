@@ -10,6 +10,7 @@
 		//shared
 		"shared/node_modules/": true,
 		"shared/yarn.lock": true,
+		"shared/tailwind.config.ts": true,
 		//web
 		"web/node_modules/": true,
 		"web/.next/": true,
@@ -24,6 +25,7 @@
 		"web/yarn.lock": true,
 		"web/jest.config.js": true,
 		"web/jest.setup.js": true,
+		"web/.swc": true,
 		//mobile
 		"mobile/node_modules/": true,
 		"mobile/.expo/": true,
