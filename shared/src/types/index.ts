@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { JSXElementConstructor, ReactPortal } from 'react';
-import {} from 'tailwindcss'
+import type { ReactTestInstance } from 'react-test-renderer';
 
 export type ReactComponent =
 	| React.ReactElement<any, string | JSXElementConstructor<any>>
@@ -9,7 +9,19 @@ export type ReactComponent =
 	| boolean
 	| null
 	| undefined
-	| JSXElementConstructor<any>;
+	| JSXElementConstructor<any>
+	| HTMLElement;
+
+export type ReactComponentTest =
+	| React.ReactElement<any, string | JSXElementConstructor<any>>
+	| Iterable<React.ReactNode>
+	| ReactPortal
+	| boolean
+	| null
+	| undefined
+	| JSXElementConstructor<any>
+	| HTMLElement
+	| ReactTestInstance;
 
 export interface AuxProps {
 	children: ReactComponent;

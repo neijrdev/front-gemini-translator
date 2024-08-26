@@ -14,5 +14,8 @@
 		"tailwindcss": "^3.4.10",
 		"typescript": "^5.5.4"
 	},
-	"devDependencies": {}
+	"devDependencies": {
+		"@types/react-test-renderer": "^18.3.0",
+		"react-test-renderer": "^18.3.1"
+	}
 }
