@@ -1,6 +1,6 @@
-// src/infrastructure/platform/ExpoPickerService.ts
 import { PickerDocumentServiceI } from '@/domain/services/PickerDocumentService';
 import * as DocumentPicker from 'expo-document-picker';
+import { createFileFromUri } from './CreateFileFromUri';
 
 export class ExpoPickerService implements PickerDocumentServiceI {
 	async pickPDF(): Promise<File | null> {
@@ -13,10 +13,11 @@ export class ExpoPickerService implements PickerDocumentServiceI {
 			return null;
 		}
 
-		if (!result.assets[0].file) {
+		if (!result.assets[0]) {
 			return null;
 		}
 
-		return result.assets[0].file;
+		const { uri, mimeType, name, size } = result.assets[0];
+		return await createFileFromUri(uri, name, mimeType as string, size as number);
 	}
 }
