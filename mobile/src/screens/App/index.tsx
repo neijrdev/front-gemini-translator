@@ -1,11 +1,18 @@
 import React from 'react';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { AppScreenMobile } from './adapter';
+import { sharedComponentsProps } from '@/components';
+import ButtonPicker, { FilePickerButtonProps } from './components/FilePickerButton';
+import { ExpoPickerService } from '@/infrastructure/platform/ExpoPickerService';
 
 export default function AppScreen() {
-	return (
-		<SafeAreaView style={{ flex: 1 }}>
-			<AppScreenMobile />
-		</SafeAreaView>
-	);
+	const appScreenProps = {
+		components: {
+			...sharedComponentsProps.components,
+			ButtonPicker: (props: FilePickerButtonProps) => (
+				<ButtonPicker {...props} pickerDocumentService={new ExpoPickerService()} />
+			)
+		}
+	};
+
+	return <AppScreenMobile {...appScreenProps} />;
 }

@@ -1,22 +1,28 @@
 import React from 'react';
-import { GestureResponderEvent, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
+import { PickerDocumentServiceI } from '@/domain/services/PickerDocumentService';
 
-type FilePickerButtonProps = {
+export type FilePickerButtonProps = {
 	children: React.ReactNode;
 	className: string;
 	onPickerResult: (file: File | null) => void;
 	['data-testid']: string;
+	pickerDocumentService: PickerDocumentServiceI;
 };
 
-export default function FilePickerButton({ children, onPickerResult, ...rest }: FilePickerButtonProps) {
-	const handleButtonClick = (event: GestureResponderEvent) => {
-		console.log(event);
-		const mockFilePdf = new File(['conteúdo do arquivo'], 'arquivo.pdf', { type: 'application/pdf' });
-		onPickerResult(mockFilePdf);
+export default function FilePickerButton({
+	children,
+	onPickerResult,
+	pickerDocumentService,
+	...rest
+}: FilePickerButtonProps) {
+	const handleButtonClick = async () => {
+		const documentFile = await pickerDocumentService.pickPDF();
+		onPickerResult(documentFile);
 	};
 
 	return (
-		<Pressable onPress={handleButtonClick} {...rest} testID={rest['data-testid']}>
+		<Pressable onPress={handleButtonClick} testID={rest['data-testid']} {...rest}>
 			{children}
 		</Pressable>
 	);
