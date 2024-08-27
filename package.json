@@ -4,7 +4,6 @@
 	"main": "index.js",
 	"author": "nei.vitor",
 	"license": "MIT",
-	"dependencies": {},
 	"scripts": {
 		"dev": "tsc --watch",
 		"lint": "eslint",
