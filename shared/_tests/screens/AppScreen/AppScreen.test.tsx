@@ -8,14 +8,19 @@ export function runAppScreenTests(
 		helpers: Helpers;
 		sharedComponentProps: AppScreenProps;
 		rootPath: string;
+		Provider: (props: React.PropsWithChildren) => React.JSX.Element;
 	}
 ) {
 	describe('AppScreen Component', () => {
 		it('should render correctly', () => {
 			//GIVEN
-			const { render, sharedComponentProps, helpers } = setup();
+			const { render, sharedComponentProps, helpers, Provider } = setup();
 			const { expectToHaveText, fireEvent, mockPickerFile } = helpers;
-			const { getByText, getByTestId } = render(<AppScreen {...sharedComponentProps} />);
+			const { getByText, getByTestId } = render(
+				<Provider>
+					<AppScreen {...sharedComponentProps} />
+				</Provider>
+			);
 
 			//THE -
 			//TITLE

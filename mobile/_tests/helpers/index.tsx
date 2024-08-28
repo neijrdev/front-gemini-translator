@@ -1,8 +1,8 @@
-import { sharedComponentsProps } from '@/components';
 import { render, RenderOptions, fireEvent as fireEventNative } from '@testing-library/react-native';
 import { Link } from 'expo-router';
 import { ReactTestInstance } from 'react-test-renderer';
 import { ComponentRenderFunction, RenderResultShared } from '../../../shared/helpers';
+import { sharedComponentsProps } from '@/presentation/utils/MakeScreenProps';
 
 export function expectToHaveProp(element: unknown, propName: string, propValue: unknown) {
 	expect(element).toHaveProp(propName, propValue);
