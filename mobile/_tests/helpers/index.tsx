@@ -3,6 +3,9 @@ import { Link } from 'expo-router';
 import { ReactTestInstance } from 'react-test-renderer';
 import { ComponentRenderFunction, RenderResultShared } from '../../../shared/helpers';
 import { sharedComponentsProps } from '@/presentation/utils/MakeScreenProps';
+import { ReactInstance, ScreenProps } from '@shared/types';
+import { MockNavigationSpy } from '../presentation/navigation/Navigation';
+import React from 'react';
 
 export function expectToHaveProp(element: unknown, propName: string, propValue: unknown) {
 	expect(element).toHaveProp(propName, propValue);
@@ -51,3 +54,13 @@ type MockInputFilePros = {
 export function mockInputFile({ getByTestId, inputTestId, mockInput }: MockInputFilePros) {
 	console.log(getByTestId, inputTestId, mockInput);
 }
+
+export const defaultScreenPropsMobile: ScreenProps = {
+	...sharedComponentsProps,
+	components: {
+		...sharedComponentsProps.components,
+		Link
+	},
+	navigation: new MockNavigationSpy(),
+	react: React as ReactInstance
+};

@@ -2,23 +2,18 @@ import '@testing-library/jest-native/extend-expect';
 import React from 'react';
 import { runAppScreenTests } from '@sharedtest/screens/AppScreen/AppScreen.test';
 import { defaultHelpers, renderMobile } from '../../helpers';
-import { Link } from '../../mockComponents/Link';
 import { FileButtonPicker } from '../../mockComponents/FilePickerButton';
-import { sharedComponentsProps } from '@/presentation/utils/MakeScreenProps';
 import { makeFileProvider } from '@shared/presentation/context/FileContext';
 import { ReactInstance } from '@shared/types';
-import { MockNavigationSpy } from '../../presentation/navigation/Navigation';
 import { AppScreenProps } from '@shared/presentation/screens/AppScreen';
+import { defaultScreenPropsMobile } from '../../helpers/index';
 
 export const customSharedComponentsProps: AppScreenProps = {
-	...sharedComponentsProps,
+	...defaultScreenPropsMobile,
 	components: {
-		...sharedComponentsProps.components,
-		Link,
+		...defaultScreenPropsMobile.components,
 		ButtonPicker: FileButtonPicker
-	},
-	navigation: new MockNavigationSpy(),
-	react: React as ReactInstance
+	}
 };
 
 const setup = () => ({
