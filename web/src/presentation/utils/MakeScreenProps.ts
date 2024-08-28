@@ -5,7 +5,7 @@ import Button from '@/components/Button';
 import { Navigation } from '@shared/presentation/navigation';
 import { NextJsNavigation } from '../navigation/Navigation';
 
-export const sharedComponentsProps: ScreenProps = {
+export const sharedScreenProps: ScreenProps = {
 	components: {
 		Container: 'div',
 		Text: 'p',
@@ -18,7 +18,7 @@ export const sharedComponentsProps: ScreenProps = {
 
 export function makeScreenPropsDefault(navigation: Navigation = new NextJsNavigation()) {
 	const appScreenProps: ScreenProps = {
-		...sharedComponentsProps,
+		...sharedScreenProps,
 		navigation
 	};
 

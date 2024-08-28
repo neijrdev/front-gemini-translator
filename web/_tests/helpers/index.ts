@@ -1,7 +1,11 @@
 import { fireEvent as fireEventReact, render, RenderOptions, within } from '@testing-library/react';
-import { ReactElement } from 'react';
+import React, { ReactElement } from 'react';
 import '@testing-library/jest-dom';
 import { ComponentRenderFunction, RenderResultShared } from '../../../shared/helpers';
+import { ReactInstance, ScreenProps } from '@shared/types';
+import { MockNavigationSpy } from '../presentation/navigation/Navigation';
+import { sharedScreenProps } from '@/presentation/utils/MakeScreenProps';
+import { makeFileProvider } from '@shared/presentation/context/FileContext';
 
 export function expectToHaveProp(element: unknown, propName: string, propValue: unknown) {
 	// "@ts-expect-error"
@@ -44,3 +48,17 @@ type MockInputFilePros = {
 export function mockInputFile({ getByTestId, inputTestId, mockInput }: MockInputFilePros) {
 	fireEventReact.change(getByTestId(inputTestId + '.input'), { target: { files: [mockInput] } });
 }
+
+export const defaultScreenPropsWeb: ScreenProps = {
+	...sharedScreenProps,
+	navigation: new MockNavigationSpy(),
+	react: React as ReactInstance
+};
+
+export const defaultSetupTestsWeb = () => ({
+	helpers: defaultHelpers,
+	render: renderWeb,
+	sharedComponentProps: defaultScreenPropsWeb,
+	rootPath: 'http://localhost/',
+	Provider: makeFileProvider(React as ReactInstance)
+});
