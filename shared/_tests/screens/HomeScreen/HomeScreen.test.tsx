@@ -1,13 +1,13 @@
 import React from 'react';
-import HomeScreen from '../../../src/presentation/screens/HomeScreen';
-import { SharedComponentProps } from '../../../src/types';
+import FileViewScreen from '../../../src/presentation/screens/FileViewScreen';
 import { Helpers, RenderFunction } from '../../../helpers';
+import { ScreenProps } from '@/types';
 
 export function runHomeScreenTests(
 	setup: () => {
 		render: RenderFunction;
 		helpers: Helpers;
-		sharedComponentProps: SharedComponentProps;
+		sharedComponentProps: ScreenProps;
 		rootPath: string;
 	}
 ) {
@@ -16,7 +16,7 @@ export function runHomeScreenTests(
 			//GIVEN
 			const { render, helpers, sharedComponentProps, rootPath } = setup();
 			const { expectToHaveProp } = helpers;
-			const { getByText, getByTestId } = render(<HomeScreen components={sharedComponentProps.components} />);
+			const { getByText, getByTestId } = render(<FileViewScreen {...sharedComponentProps} />);
 
 			//THE
 			expect(getByText('Home')).toBeTruthy();

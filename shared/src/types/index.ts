@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Navigation } from '@/presentation/navigation';
 import React, { JSXElementConstructor, ReactPortal } from 'react';
 import type { ReactTestInstance } from 'react-test-renderer';
 
@@ -31,11 +32,15 @@ export interface AuxProps {
 
 export type GenericJSXElement = JSXElementConstructor<any> | string;
 
-export interface SharedComponentProps {
+export type ReactInstance = typeof React;
+
+export interface ScreenProps {
 	components: {
 		Container: GenericJSXElement;
 		Text: GenericJSXElement;
 		Link: GenericJSXElement;
 		Button: GenericJSXElement;
 	};
+	react: ReactInstance;
+	navigation: Navigation;
 }

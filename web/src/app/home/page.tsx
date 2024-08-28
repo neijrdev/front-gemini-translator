@@ -1,3 +1,3 @@
-import Home from '@/screens/Home';
+import FileView from '@/screens/FileView';
 
-export default Home;
+export default FileView;

@@ -15,7 +15,7 @@ export function runAppScreenTests(
 			//GIVEN
 			const { render, sharedComponentProps, helpers } = setup();
 			const { expectToHaveText, fireEvent, mockPickerFile } = helpers;
-			const { getByText, getByTestId } = render(<AppScreen components={sharedComponentProps.components} />);
+			const { getByText, getByTestId } = render(<AppScreen {...sharedComponentProps} />);
 
 			//THE -
 			//TITLE

@@ -16,8 +16,8 @@
 		"strict": true,
 		"paths": {
 			"@/*": ["./src/*"],
-			"@types/*": ["./src/types*"],
-			"@presentation/*": ["./src/presentation*"]
+			"@types/*": ["./src/types/*"],
+			"@presentation/*": ["./src/presentation/*"]
 		}
 	},
 	"include": ["**/*.ts", "**/*.tsx"],

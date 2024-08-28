@@ -1,10 +1,11 @@
 import React from 'react';
-import { GenericJSXElement, SharedComponentProps } from '@/types';
+import { GenericJSXElement, ScreenProps } from '@/types';
 import Bottom from './components/Bottom';
 import Middle from './components/Middle';
+import { useFile } from '../../context/FileContext';
 
-export interface AppScreenProps extends SharedComponentProps {
-	components: SharedComponentProps['components'] & {
+export interface AppScreenProps extends Omit<ScreenProps, 'components'> {
+	components: ScreenProps['components'] & {
 		ButtonPicker: React.ComponentType<{
 			onPickerResult: (file: File | null) => void;
 			className: string;
@@ -13,18 +14,23 @@ export interface AppScreenProps extends SharedComponentProps {
 	};
 }
 
-export default function AppScreen(sharedComponentProps: AppScreenProps) {
+export default function AppScreen(appScreenProps: AppScreenProps) {
+	const navigation = appScreenProps.navigation;
+	const { setFile } = useFile(appScreenProps.react);
+
 	const onPickerResult = (file: File | null) => {
 		console.log('file recebida pickerFileResult');
 		console.log(file?.name);
+		setFile(file);
+		navigation.navigate('home');
 	};
 
-	const { components: Component } = sharedComponentProps;
+	const { components: Component } = appScreenProps;
 
 	return (
-		<Component.Container className="flex min-h-screen flex-1 items-center flex-col p-5 pb-10 justify-between">
-			<Middle {...sharedComponentProps} />
-			<Bottom {...sharedComponentProps} onPickerResult={onPickerResult} />
+		<Component.Container className="flex h-screen flex-1 items-center flex-col p-5 justify-between">
+			<Middle {...appScreenProps} />
+			<Bottom {...appScreenProps} onPickerResult={onPickerResult} />
 		</Component.Container>
 	);
 }
