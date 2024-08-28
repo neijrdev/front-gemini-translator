@@ -26,6 +26,7 @@
 		"web/jest.config.js": true,
 		"web/jest.setup.js": true,
 		"web/.swc": true,
+		"web/.yarn": true,
 		//mobile
 		"mobile/node_modules/": true,
 		"mobile/.expo/": true,
