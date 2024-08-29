@@ -1,11 +1,11 @@
-import { render, RenderOptions, fireEvent as fireEventNative } from '@testing-library/react-native';
+import { render, RenderOptions, fireEvent as fireEventNative, waitFor, act } from '@testing-library/react-native';
+import React from 'react';
 import { Link } from 'expo-router';
 import { ReactTestInstance } from 'react-test-renderer';
-import { ComponentRenderFunction, RenderResultShared } from '../../../shared/helpers';
+import { ComponentRenderFunction, Helpers, RenderResultShared } from '../../../shared/_tests/helpers';
 import { sharedComponentsProps } from '@/presentation/utils/MakeScreenProps';
 import { ReactInstance, ScreenProps } from '@shared/types';
 import { MockNavigationSpy } from '../presentation/navigation/Navigation';
-import React from 'react';
 
 export function expectToHaveProp(element: unknown, propName: string, propValue: unknown) {
 	expect(element).toHaveProp(propName, propValue);
@@ -20,13 +20,6 @@ export function fireEvent(element: ReactTestInstance) {
 		click: () => fireEventNative.press(element)
 	};
 }
-
-export const defaultHelpers = {
-	expectToHaveProp,
-	expectToHaveText,
-	fireEvent,
-	mockPickerFile: mockInputFile
-};
 
 export function renderMobile(component: ComponentRenderFunction, options?: unknown): RenderResultShared {
 	const { getByText, getByTestId, debug } = render(component as React.ReactElement, options as RenderOptions);
@@ -63,4 +56,16 @@ export const defaultScreenPropsMobile: ScreenProps = {
 	},
 	navigation: new MockNavigationSpy(),
 	react: React as ReactInstance
+};
+
+export const defaultHelpers: Helpers = {
+	expectToHaveProp,
+	expectToHaveText,
+	fireEvent,
+	mockPickerFile: mockInputFile,
+	spy: {
+		navigation: new MockNavigationSpy()
+	},
+	waitFor,
+	act
 };

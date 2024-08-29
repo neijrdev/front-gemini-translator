@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Navigation } from '@shared/presentation/navigation';
+import { SpyNavigation } from '@sharedtest/helpers/index';
 
-export class MockNavigationSpy implements Navigation {
+export class MockNavigationSpy implements SpyNavigation {
 	page: string | null = null;
 	params: any | null = null;
 	callGoBackCount: number = 0;

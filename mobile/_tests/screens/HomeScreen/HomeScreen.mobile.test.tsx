@@ -9,7 +9,7 @@ import { defaultScreenPropsMobile } from '../../helpers/index';
 const setup = () => ({
 	helpers: defaultHelpers,
 	render: renderMobile,
-	sharedComponentProps: defaultScreenPropsMobile,
+	screenProps: defaultScreenPropsMobile,
 	rootPath: '/',
 	Provider: makeFileProvider(React as ReactInstance)
 });

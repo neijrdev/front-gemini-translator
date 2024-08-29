@@ -19,10 +19,8 @@ export default function AppScreen(appScreenProps: AppScreenProps) {
 	const { setFile } = useFile(appScreenProps.react);
 
 	const onPickerResult = (file: File | null) => {
-		console.log('file recebida pickerFileResult');
-		console.log(file?.name);
 		setFile(file);
-		navigation.navigate('home');
+		navigation.navigate('viewfile');
 	};
 
 	const { components: Component } = appScreenProps;

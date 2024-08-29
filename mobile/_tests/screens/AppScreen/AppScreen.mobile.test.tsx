@@ -2,24 +2,44 @@ import '@testing-library/jest-native/extend-expect';
 import React from 'react';
 import { runAppScreenTests } from '@sharedtest/screens/AppScreen/AppScreen.test';
 import { defaultHelpers, renderMobile } from '../../helpers';
-import { FileButtonPicker } from '../../mockComponents/FilePickerButton';
-import { makeFileProvider } from '@shared/presentation/context/FileContext';
+import { FileButtonPicker, MockPickerDocumentService } from '../../mockComponents/FilePickerButton';
+import { FileContext, FileContextType, makeFileProvider } from '@shared/presentation/context/FileContext';
 import { ReactInstance } from '@shared/types';
-import { AppScreenProps } from '@shared/presentation/screens/AppScreen';
 import { defaultScreenPropsMobile } from '../../helpers/index';
+import { MockInputFilePros } from '@sharedtest/helpers';
+import { FilePickerButtonProps } from '@/screens/App/components/FilePickerButton';
 
-export const customSharedComponentsProps: AppScreenProps = {
-	...defaultScreenPropsMobile,
-	components: {
-		...defaultScreenPropsMobile.components,
-		ButtonPicker: FileButtonPicker
-	}
+const customScreensPropsHelpers = () => {
+	let fileContextSpy: FileContextType | null | undefined = null;
+	const pickerDocumentService = new MockPickerDocumentService();
+	const helpers = {
+		...defaultHelpers,
+		mockPickerFile: (props: MockInputFilePros) => {
+			pickerDocumentService.mockPickPDF(props.mockInput);
+		}
+	};
+
+	return {
+		...defaultScreenPropsMobile,
+		components: {
+			...defaultScreenPropsMobile.components,
+			ButtonPicker: (props: FilePickerButtonProps) => {
+				fileContextSpy = screenProps.react.useContext(FileContext);
+
+				return <FileButtonPicker {...props} pickerDocumentService={pickerDocumentService} />;
+			}
+		},
+		helpers,
+		fileContextSpy
+	};
 };
 
+const screenProps = customScreensPropsHelpers();
+
 const setup = () => ({
-	helpers: defaultHelpers,
+	helpers: screenProps.helpers,
 	render: renderMobile,
-	sharedComponentProps: customSharedComponentsProps,
+	screenProps: screenProps,
 	rootPath: '/',
 	Provider: makeFileProvider(React as ReactInstance)
 });

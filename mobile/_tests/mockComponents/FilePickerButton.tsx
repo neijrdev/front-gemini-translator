@@ -3,14 +3,21 @@ import ButtonPicker, { FilePickerButtonProps } from '@/screens/App/components/Fi
 
 export interface PickerDocumentServiceI {
 	pickPDF(): Promise<File | null>;
+	mockPickPDF(file: File): void;
 }
 
-class MockPickerDocumentService implements PickerDocumentServiceI {
+export class MockPickerDocumentService implements PickerDocumentServiceI {
+	private mockFile: File | null = null;
+
 	async pickPDF(): Promise<File | null> {
-		return null;
+		return this.mockFile;
+	}
+
+	mockPickPDF(file: File) {
+		this.mockFile = file;
 	}
 }
 
-export const FileButtonPicker = (props: FilePickerButtonProps) => {
-	return <ButtonPicker {...props} pickerDocumentService={new MockPickerDocumentService()} />;
+export const FileButtonPicker = ({ pickerDocumentService, ...rest }: FilePickerButtonProps) => {
+	return <ButtonPicker {...rest} pickerDocumentService={pickerDocumentService} />;
 };
