@@ -1,14 +1,7 @@
 import { RouteParamInput, useRouter } from 'expo-router';
 import { Navigation } from '@shared/presentation/navigation';
 
-export type ExpoRouterAllowedRoutes =
-	| '/'
-	| '/_sitemap'
-	| '/home'
-	| `./${string}`
-	| `../${string}`
-	| '..'
-	| `${string}:${string}`;
+export type ExpoRouterAllowedRoutes = '/' | '/_sitemap' | `./${string}` | `../${string}` | '..' | `${string}:${string}`;
 
 export class ExpoRouterNavigation implements Navigation {
 	private router = useRouter();
