@@ -1,11 +1,11 @@
 import { fireEvent as fireEventReact, render, RenderOptions, within } from '@testing-library/react';
 import React, { ReactElement } from 'react';
 import '@testing-library/jest-dom';
-import { ComponentRenderFunction, RenderResultShared } from '../../../shared/helpers';
 import { ReactInstance, ScreenProps } from '@shared/types';
 import { MockNavigationSpy } from '../presentation/navigation/Navigation';
 import { sharedScreenProps } from '@/presentation/utils/MakeScreenProps';
 import { makeFileProvider } from '@shared/presentation/context/FileContext';
+import { ComponentRenderFunction, RenderResultShared } from '@sharedtest/helpers';
 
 export function expectToHaveProp(element: unknown, propName: string, propValue: unknown) {
 	// "@ts-expect-error"
