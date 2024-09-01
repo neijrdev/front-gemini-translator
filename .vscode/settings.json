@@ -7,6 +7,7 @@
 		"eslint.config.mjs": true,
 		".gitignore": true,
 		"yarn.lock": true,
+		".yarn": true,
 		//shared
 		"shared/node_modules/": true,
 		"shared/yarn.lock": true,
