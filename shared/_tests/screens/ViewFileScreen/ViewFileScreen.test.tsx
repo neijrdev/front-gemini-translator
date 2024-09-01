@@ -1,7 +1,8 @@
 import React from 'react';
 import FileViewScreen from '../../../src/presentation/screens/FileViewScreen';
-import { Helpers, RenderFunction } from '../../helpers';
+import { Helpers, RenderFunction, getMockedFile } from '../../helpers';
 import { ScreenProps } from '@/types';
+import { renderWithProvider } from '../../helpers/contexts';
 
 export function runViewFileScreenTests(
 	setup: () => {
@@ -15,15 +16,21 @@ export function runViewFileScreenTests(
 	describe('ViewFile Component', () => {
 		it('should render correctly', () => {
 			//GIVEN
-			const { render, screenProps, Provider } = setup();
-			const { getByText } = render(
-				<Provider>
-					<FileViewScreen {...screenProps} />
-				</Provider>
-			);
+			const providerProps = {
+				file: getMockedFile(),
+				setFile: () => {}
+			};
+			const { render, screenProps } = setup();
+			const { getByText } = renderWithProvider(<FileViewScreen {...screenProps} />, {
+				providerProps,
+				render,
+				react: screenProps.react
+			});
 
-			//THE
+			//THE - Title
 			expect(getByText('File View')).toBeTruthy();
+			//File name uploaded
+			expect(getByText('arquivo.pdf')).toBeTruthy();
 		});
 	});
 }

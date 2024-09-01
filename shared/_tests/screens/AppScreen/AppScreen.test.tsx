@@ -1,6 +1,6 @@
 import React from 'react';
 import AppScreen from '../../../src/presentation/screens/AppScreen';
-import { Helpers, RenderFunction, ScreenPropsTest } from '../../helpers';
+import { Helpers, RenderFunction, ScreenPropsTest, getMockedFile } from '../../helpers';
 import { GenericJSXElement, ScreenProps } from '@/types';
 import { renderWithProvider } from '../../helpers/contexts';
 import { FileContextType } from '@/presentation/context/FileContext';
@@ -65,11 +65,7 @@ export function runAppScreenTests(setup: AppScreenSetup) {
 	});
 }
 
-function getMockFile() {
-	return new File(['conteúdo do arquivo'], 'arquivo.pdf', { type: 'application/pdf' });
-}
-
-function getSut(setup: AppScreenSetup, mockFile: File | null = getMockFile()) {
+function getSut(setup: AppScreenSetup, mockFile: File | null = getMockedFile()) {
 	const providerProps = new ProviderPropsValues();
 
 	const { render, screenProps, helpers } = setup();

@@ -54,3 +54,7 @@ export interface ScreenPropsTest extends Omit<ScreenProps, 'navigation'> {
 	navigation: SpyNavigation;
 	fileContextSpy: FileContextType | undefined | null;
 }
+
+export function getMockedFile() {
+	return new File(['conteúdo do arquivo'], 'arquivo.pdf', { type: 'application/pdf' });
+}
