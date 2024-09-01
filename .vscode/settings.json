@@ -12,6 +12,7 @@
 		"shared/node_modules/": true,
 		"shared/yarn.lock": true,
 		"shared/tailwind.config.ts": true,
+		"shared/.yarn": true,
 		//web
 		"web/node_modules/": true,
 		"web/.next/": true,
