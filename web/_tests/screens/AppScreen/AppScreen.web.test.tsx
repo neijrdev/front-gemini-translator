@@ -1,15 +1,15 @@
 /* eslint-disable react/react-in-jsx-scope */
-import { runAppScreenTests } from '@sharedtest/screens/AppScreen/AppScreen.test';
+import { AppScreenSetup, runAppScreenTests } from '@sharedtest/screens/AppScreen/AppScreen.test';
 import { defaultScreenPropsWeb, defaultSetupTestsWeb } from '../../helpers';
-import FilePickerButton from '@/screens/App/components/FilePickerButton';
+import MockFilePickerButton from '../../mockComponents/MockFilePickerButton';
 
-const appSetupTest = () => ({
+const appSetupTest: AppScreenSetup = () => ({
 	...defaultSetupTestsWeb(),
-	sharedComponentProps: {
-		...defaultSetupTestsWeb().sharedComponentProps,
+	screenProps: {
+		...defaultSetupTestsWeb().screenProps,
 		components: {
 			...defaultScreenPropsWeb.components,
-			ButtonPicker: FilePickerButton
+			ButtonPicker: MockFilePickerButton
 		}
 	}
 });

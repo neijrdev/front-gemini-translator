@@ -1,11 +1,11 @@
-import { fireEvent as fireEventReact, render, RenderOptions, within } from '@testing-library/react';
+import { fireEvent as fireEventReact, render, RenderOptions, within, waitFor, act } from '@testing-library/react';
 import React, { ReactElement } from 'react';
 import '@testing-library/jest-dom';
 import { ReactInstance, ScreenProps } from '@shared/types';
 import { MockNavigationSpy } from '../presentation/navigation/Navigation';
 import { sharedScreenProps } from '@/presentation/utils/MakeScreenProps';
 import { makeFileProvider } from '@shared/presentation/context/FileContext';
-import { ComponentRenderFunction, RenderResultShared } from '@sharedtest/helpers';
+import { ComponentRenderFunction, Helpers, RenderResultShared } from '@sharedtest/helpers';
 
 export function expectToHaveProp(element: unknown, propName: string, propValue: unknown) {
 	// "@ts-expect-error"
@@ -22,11 +22,16 @@ export function fireEvent(element: Element) {
 	};
 }
 
-export const defaultHelpers = {
+export const defaultHelpers: Helpers = {
 	expectToHaveProp,
 	expectToHaveText,
 	fireEvent,
-	mockPickerFile: mockInputFile
+	mockPickerFile: mockInputFile,
+	spy: {
+		navigation: new MockNavigationSpy()
+	},
+	waitFor,
+	act
 };
 
 export function renderWeb(component: ComponentRenderFunction, options?: unknown): RenderResultShared {
@@ -41,7 +46,7 @@ export function renderWeb(component: ComponentRenderFunction, options?: unknown)
 
 type MockInputFilePros = {
 	inputTestId: string;
-	mockInput: File;
+	mockInput: File | null;
 	getByTestId: (testId: string) => Element;
 };
 
@@ -58,7 +63,7 @@ export const defaultScreenPropsWeb: ScreenProps = {
 export const defaultSetupTestsWeb = () => ({
 	helpers: defaultHelpers,
 	render: renderWeb,
-	sharedComponentProps: defaultScreenPropsWeb,
+	screenProps: defaultScreenPropsWeb,
 	rootPath: 'http://localhost/',
 	Provider: makeFileProvider(React as ReactInstance)
 });

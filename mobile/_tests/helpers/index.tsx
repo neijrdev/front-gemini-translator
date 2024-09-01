@@ -40,7 +40,7 @@ export const customSharedComponentsProps = {
 
 type MockInputFilePros = {
 	inputTestId: string;
-	mockInput: File;
+	mockInput: File | null;
 	getByTestId: (testId: string) => Element;
 };
 

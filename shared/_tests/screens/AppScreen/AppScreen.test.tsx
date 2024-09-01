@@ -21,7 +21,7 @@ class ProviderPropsValues implements FileContextType {
 	};
 }
 
-type AppScreenSetup = () => {
+export type AppScreenSetup = () => {
 	render: RenderFunction;
 	helpers: Helpers;
 	screenProps: AppScreenPropsTest;
