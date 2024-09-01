@@ -13,6 +13,7 @@
 		"shared/yarn.lock": true,
 		"shared/tailwind.config.ts": true,
 		"shared/.yarn": true,
+		"shared/tsconfig.json": true,
 		//web
 		"web/node_modules/": true,
 		"web/.next/": true,
