@@ -15,7 +15,7 @@ const customScreensPropsHelpers = () => {
 	const helpers = {
 		...defaultHelpers,
 		mockPickerFile: (props: MockInputFilePros) => {
-			pickerDocumentService.mockPickPDF(props.mockInput);
+			pickerDocumentService.mockPickPDF(props.mockInput as File);
 		}
 	};
 
