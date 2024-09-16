@@ -11,14 +11,17 @@
 		"test:mobile": "cd mobile && yarn test",
 		"test:all": "yarn test:web && yarn test:mobile",
 		"install:web": "cd web && yarn",
+		"install:shared": "cd shared && yarn",
 		"install:mobile": "cd mobile && yarn",
-		"install:all": "yarn install:web && yarn install:mobile"
+		"install:all": "yarn install:web && yarn install:mobile && yarn install:shared"
 	},
 	"devDependencies": {
 		"@babel/runtime": "^7.25.6",
 		"@eslint/js": "^9.9.1",
 		"@types/jest": "^29.5.12",
+		"@types/node": "^22.5.5",
 		"@types/react": "^18.3.5",
+		"@types/react-test-renderer": "^18.3.0",
 		"@typescript-eslint/eslint-plugin": "^8.2.0",
 		"@typescript-eslint/parser": "^8.2.0",
 		"eslint": "^9.9.1",
