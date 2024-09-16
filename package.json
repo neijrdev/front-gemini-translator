@@ -15,6 +15,7 @@
 		"install:all": "yarn install:web && yarn install:mobile"
 	},
 	"devDependencies": {
+		"@babel/runtime": "^7.25.6",
 		"@eslint/js": "^9.9.1",
 		"@types/jest": "^29.5.12",
 		"@types/react": "^18.3.5",
